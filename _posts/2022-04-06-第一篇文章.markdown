@@ -12,4 +12,7 @@ date: 2022-04-06 16:00:00.000000000 +08:00
 
 我会不定时发表自己的博客～
 
+<img width="540" alt="image" src="https://user-images.githubusercontent.com/88485487/161931398-c2ff63e6-b348-4055-a778-a1d9471cf53c.png">
+
+
 那就这样了，bye～
