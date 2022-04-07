@@ -17,13 +17,13 @@ cover_color: blue
 
 # The blog button should not be removed.
 blog_button:
-    title: 博客
+    title: Blog
     description: 参观我的博客
 
 # Navigation buttons in the front page.
 nav:
-    - {title: 项目, description: 我的项目, url: 'https://github.com/Apple-QAQ?tab=repositories'}
-    - {title: 友链, description: 友链列表, url: 'https://apple-qaq.github.io/friendly'}
+    - {title: Projects, description: 查看我的项目, url: 'https://github.com/Apple-QAQ?tab=repositories'}
+    - {title: Friend, description: 查看我的友链, url: 'https://apple-qaq.github.io/friendly'}
 
 # Pagination
 plugins: [jekyll-paginate]
