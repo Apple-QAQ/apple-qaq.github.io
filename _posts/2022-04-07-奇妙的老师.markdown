@@ -20,6 +20,7 @@ date: 2022-04-07 16:00:00.000000000 +08:00
 
 没意思
 
-![image-20220407143029315](/home/apple_qaq/.config/Typora/typora-user-images/image-20220407143029315.png)
+![image-20220407143029315](https://user-images.githubusercontent.com/88485487/162135317-c1e1308c-667c-4598-a98d-d2252a0df0c8.png)
+
 
 再骂一句：腾讯会议linux版本真垃圾
