@@ -1,0 +1,113 @@
+---
+layout: post
+title: Code test
+date: 2022-04-09 12:01:49.000000000 +08:00
+---
+this is python code
+{% highlight python %}
+import turtle as t
+import random
+import time
+
+
+# 新建turtle实例
+
+t0 = t.Turtle()
+t0.color("black")
+t0.shape("turtle")
+t0.pu()
+t0.goto(-160,100)
+
+t1 = t.Turtle()
+t1.color("red")
+t1.shape("turtle")
+t1.pu()
+t1.goto(-160,50)
+
+t2 = t.Turtle()
+t2.color("blue")
+t2.shape("turtle")
+t2.pu()
+t2.goto(-160,0)
+
+t3 = t.Turtle()
+t3.color("green")
+t3.shape("turtle")
+t3.pu()
+t3.goto(-160,-50)
+
+t.pu()
+t.goto(-130,110)
+t.hideturtle()
+t.speed(8)
+for j in range(14):
+    t.write(j)
+    t.pu()
+    t.right(90)
+    t.forward(10)
+    t.pd()
+    t.forward(160)
+    t.backward(170)
+    t.pu()
+    t.left(90)
+    t.fd(20)
+
+# sum:
+d_sum = 0
+d1_sum = 0
+d2_sum = 0
+d3_sum = 0
+
+# time:
+d_time = 0
+d1_time = 0
+d2_time = 0
+d3_time =0
+
+t0.pd()
+t1.pd()
+t2.pd()
+t3.pd()# 轨迹
+
+for i in range(100):
+    if d_sum <= 280:
+        d = random.randint(1,5)
+        t0.forward(d)
+        d_sum += d
+        d_time += 1
+    if d1_sum <= 280:
+        d1 = random.randint(1,5)
+        t1.forward(d1)
+        d1_sum += d1
+        d1_time += 1
+    if d2_sum <= 280:
+        d2 = random.randint(1,5)
+        t2.forward(d2)
+        d2_sum += d2
+        d2_time += 1
+    if d3_sum <= 280:
+        d3 = random.randint(1,5)
+        t3.forward(d3)
+        d3_sum += d3
+        d3_time += 1
+    time.sleep(0.1)
+
+t.pu()
+t.goto(145,95)
+t.pd()
+t.write(round((d_time*0.1),1))
+t.pu()
+t.goto(145,45)
+t.pd()
+t.write(round((d1_time*0.1),1))
+t.pu()
+t.goto(145,-5)
+t.pd()
+t.write(round((d2_time*0.1),1))
+t.pu()
+t.goto(145,-55)
+t.pd()
+t.write(round((d3_time*0.1),1))
+t.done()
+t.bye()# 我刚刚知道t.bye()可以推出并不会2次运行报错，为什么我以前不知道：(
+{% endhighlight %}
