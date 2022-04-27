@@ -70,7 +70,7 @@ mount <你所分的引导分区>(不一定叫做/efi，类似于/dev/sda1) /mnt/
 
 {% highlight bash %}
 pacstrap /mnt base base-devel linux linux-firmware nano
-{% endhtghlight %}
+{% endhighlight %}
 
 
 
