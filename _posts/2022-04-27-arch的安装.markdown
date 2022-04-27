@@ -27,6 +27,12 @@ Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
 （请记住这些操作方式）
 {% endhighlight %}
 
+如果一定要开`reflector`的话，执行以下命令就可以了
+
+{% highlight bash %}
+reflector --country China --age 24 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
+{% endhighlight %}
+
 ## 2. 分区
 
 使用`cfdisk`，[点击这里查看cfdisk用法](https://www.runoob.com/linux/linux-comm-cfdisk.html)
@@ -58,11 +64,26 @@ mount <你所分的引导分区>(不一定叫做/efi，类似于/dev/sda1) /mnt/
 
 输入`iwctl`进入`iwd`模式，也就是终端最前方有`[iwd] #`字样。
 
-在`iwd`模式下输入`device list`，查询电脑的网卡。记住你的网卡号，下文就用`<网卡号>`替代，一般是`wlan0`或者`wlan1`。
+在`iwd`模式下输入`device list`，查询电脑的网卡。记住你的网卡号，下文就用`<网卡号>`替代，一般是`wlan0`或者`wlan1`，若遇到`iwd`找不到网卡的话，请往下面看的说~
 
 在`iwd`模式下输入`station <网卡号> scan`，然后再输入`station <网卡号> get-networks`，显示周围的`wifi`的`ssid`扫描结果。
 
 在`iwd`模式下输入`station <网卡号> connect`，如果是加密的`wifi`，系统会提示输入`wifi`密码，如无意外，就连上网了。
+
+**若遇到`iwd`找不到网卡的话，请`ctrl+c`退出`iwd`，然后输入`rfkill list`
+
+示例输出：
+
+{% highlight bash %}
+0: phy0: Wireless LAN
+    Soft blocked: yes
+    Hard blocked: yes
+2: hci0: Bluetooth
+    Soft blocked: yes
+    Hard blocked: yes
+{% endhighlight %}
+
+输入`rfkill unblock all`以解锁，然后就可以重复上面`iwctl`的方法的说~
 
 ## 4. 安装arch
 
