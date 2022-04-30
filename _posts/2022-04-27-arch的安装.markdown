@@ -165,6 +165,14 @@ passwd <你前面设置的用户名>
 
 
 
+设置`root`用户的密码
+
+{% highlight bash %}
+passwd root
+{% endhighlight %}
+
+
+
 安装kde桌面环境以及其必要组件（建议装好桌面环境,配置好`grub`引导之后再看）
 
 修改`locale.conf`
