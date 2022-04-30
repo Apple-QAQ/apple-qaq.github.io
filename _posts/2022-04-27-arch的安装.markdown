@@ -87,6 +87,12 @@ mount <你所分的引导分区>(不一定叫做/efi，类似于/dev/sda1) /mnt/
 
 ## 4. 安装arch
 
+安装`archlinux-keyring`来预防安装出现签名问题
+
+{% highlight bash %}
+pacman -S archlinux-keyring
+{% endhighlight %}
+
 安装基本系统
 
 {% highlight bash %}
