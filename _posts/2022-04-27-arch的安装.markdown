@@ -22,7 +22,7 @@ vim /etc/pacman.d/mirrorlist
 #按下"i"进入插入并把第一行改成：
 Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
 #按下"esc"退出插入模式
-#输入:"wq!"退出vim:
+#输入":wq!"退出vim:
 :wq!
 #(请记住这些操作方式)
 {% endhighlight %}
