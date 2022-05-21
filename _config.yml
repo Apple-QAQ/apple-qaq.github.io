@@ -46,4 +46,4 @@ social:
     # id: your_ga_id
     # host: your_host
 
-theme: vno-jekyll
+theme: jekyll-theme-slate
