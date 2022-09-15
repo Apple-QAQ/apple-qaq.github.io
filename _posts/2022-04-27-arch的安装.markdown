@@ -10,13 +10,13 @@ date: 2022-04-27 16:00:00.000000000 +08:00
 
 首先，我们需要关闭万恶的`reflector`！（国内特色）
 
-{% highlight bash %}
+``` bash
 systemctl stop reflector
-{% endhighlight %}
+```
 
 随后用`vim`编辑软件源，把第一行改为 `Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch`
 
-{% highlight bash %}
+``` bash
 vim /etc/pacman.d/mirrorlist
 #随后进入了vim编辑器，熟悉linux的可以用自己喜欢的编辑器
 #按下"i"进入插入并把第一行改成：
@@ -25,21 +25,21 @@ Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
 #输入":wq!"退出vim:
 :wq!
 #(请记住这些操作方式)
-{% endhighlight %}
+```
 
 如果一定要开`reflector`的话，执行以下命令就可以了
 
-{% highlight bash %}
+``` bash
 reflector --country China --age 24 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
-{% endhighlight %}
+```
 
 ## 2. 分区
 
 使用`cfdisk`，[点击这里查看cfdisk用法](https://www.runoob.com/linux/linux-comm-cfdisk.html)
 
-{% highlight bash %}
+``` bash
 cfdisk /dev/sda
-{% endhighlight %}
+```
 
 首先先新建一个引导分区（小一点，建议100MiB）
 
@@ -47,18 +47,18 @@ cfdisk /dev/sda
 
 随后格式化分区
 
-{% highlight bash %}
+``` bash
 mkfs.fat -F32 <你所分的引导分区>(不一定叫做/efi，类似于/dev/sda1)
 mkfs.ext4 <你所分的系统根目录>(不一定是叫做/dev/sda2，类似于/dev/sda2)
-{% endhighlight %}
+```
 
 开始挂载分区
 
-{% highlight bash %}
+``` bash
 mount <你所分的系统根目录>(不一定叫做/dev/sda2，类似于/dev/sda2) /mnt
 mkdir /mnt/efi  #<-这行命令的意思是，在挂载到/mnt上的系统根目录上新建一个/efi的文件夹
 mount <你所分的引导分区>(不一定叫做/efi，类似于/dev/sda1) /mnt/efi
-{% endhighlight %}
+```
 
 ## 3. 联网 
 
@@ -74,14 +74,14 @@ mount <你所分的引导分区>(不一定叫做/efi，类似于/dev/sda1) /mnt/
 
 示例输出：
 
-{% highlight bash %}
+``` bash
 0: phy0: Wireless LAN
     Soft blocked: yes
     Hard blocked: yes
 2: hci0: Bluetooth
     Soft blocked: yes
     Hard blocked: yes
-{% endhighlight %}
+```
 
 输入`rfkill unblock all`以解锁，然后就可以重复上面`iwctl`的方法的说~
 
@@ -89,93 +89,93 @@ mount <你所分的引导分区>(不一定叫做/efi，类似于/dev/sda1) /mnt/
 
 安装`archlinux-keyring`来预防安装出现签名问题
 
-{% highlight bash %}
+``` bash
 pacman -S archlinux-keyring
-{% endhighlight %}
+```
 
 安装基本系统
 
-{% highlight bash %}
+``` bash
 pacstrap /mnt base base-devel linux linux-firmware nano
-{% endhighlight %}
+```
 
 
 
 
 生成`fstab`
 
-{% highlight bash %}
+``` bash
 genfstab -U /mnt > /mnt/etc/fstab
-{% endhighlight %}
+```
 
 
 
 
 `arch-chroot`进入安装到本地的系统
 
-{% highlight bash %}
+``` bash
 arch-chroot /mnt
-{% endhighlight %}
+```
 
 
 
 
 本地化
 
-{% highlight bash %}
+``` bash
 vim /etc/locale.gen
-{% endhighlight %}
+```
 
 
 
 取消这两个之前的注释
-{% highlight bash %}
+``` bash
 en_US.UTF-8 UTF-8
 zh_CN.UTF-8 UTF-8
-{% endhighlight %}
+```
 
 
 
 重置语言
-{% highlight bash %}
+``` bash
 locale-gen
-{% endhighlight %}
+```
 
 
 
 设置时区与utc时间
-{% highlight bash %}
+``` bash
 timedatectl set-timezone Asia/Shanghai
 timedatectl set-ntp true
 hwclock --systohc --utc
-{% endhighlight %}
+```
 
 
 
 新建用户并允许使用`sudo`
 
-{% highlight bash %}
+``` bash
 useradd -m -G wheel <你想设置的用户名>
 vim /etc/sudoers
 #添加如下行：
 %wheel ALL=(ALL) ALL
-{% endhighlight %}
+```
 
 
 
 设置这个用户的密码
 
-{% highlight bash %}
+``` bash
 passwd <你前面设置的用户名>
-{% endhighlight %}
+```
 
 
 
 设置`root`用户的密码
 
-{% highlight bash %}
+``` bash
 passwd root
-{% endhighlight %}
+```
 
 
 
@@ -185,15 +185,15 @@ passwd root
 
 推荐方法
 
-{% highlight bash %}
+``` bash
 echo LANG=zh_CN.UTF-8 > /etc/locale.conf
-{% endhighlight %}
+```
 
 或者
 
-{% highlight bash %}
+``` bash
 vim /etc/locale.conf
-{% endhighlight%}
+```
 
 然后把`LANG=zh_CN.UTF-8`加入
 
@@ -201,11 +201,11 @@ vim /etc/locale.conf
 
 kde：
 
-{% highlight bash %}
+``` bash
 pacman -S xorg plasma kde-applications sddm pipewire-pulse pipewire-alsa pipewire-jack pavucontrol networkmanager
 systemctl enable sddm
 systemctl enable NetworkManager
-{% endhighlight %}
+```
 
 gnome:
 
@@ -213,18 +213,18 @@ gnome:
 pacman -S xorg gnome gnome-extra gnome-tweak-tool gdm pipewire-pulse pipewire-alsa pipewire-jack pavucontrol networkmanager
 systemctl enable gdm
 systemctl enable NetworkManager
-{% endhighlight %}
+```
 
 xfce:
-{% highlight bash %}
+``` bash
 pacman -S xorg xfce4 xfce4-goodies lightdm-gtk-greeter-settings pipewire-pulse pipewire-alsa pipewire-jack pavucontrol network-manager-applet
 systemctl enable lightdm
 systemctl enable NetworkManager
-{% endhighlight %}
+```
 
 ## 6. 配置`grub`
 
-{% highlight bash %}
+``` bash
 pacman -S grub efibootmgr os-prober dosfstools intel-ucode
 grub-install --efi-directory=/efi
 
@@ -232,15 +232,15 @@ grub-install --efi-directory=/efi
 #取消注释并且把true改为false
 
 grub-mkconfig -o /boot/grub/grub.cfg
-{% endhighlight %}
+```
 
 **猫猫在这里提醒一句，`locale.conf`没配置的快去配置nya！**
 
 ## 7. 重启完成安装
-{% highlight bash %}
-exit  #<-退出arch-chroot
+``` bash
+exit  # <-退出arch-chroot
 reboot
-{% endhighlight %}
+```
 
 
 **猫猫恭喜你！你完成了`arch`的安装**
