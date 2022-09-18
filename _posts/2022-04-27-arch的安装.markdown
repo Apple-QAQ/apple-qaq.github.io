@@ -18,13 +18,13 @@ systemctl stop reflector
 
 ``` bash
 vim /etc/pacman.d/mirrorlist
-#随后进入了vim编辑器，熟悉linux的可以用自己喜欢的编辑器
-#按下"i"进入插入并把第一行改成：
+# 随后进入了vim编辑器，熟悉linux的可以用自己喜欢的编辑器
+# 按下"i"进入插入并把第一行改成：
 Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
-#按下"esc"退出插入模式
-#输入":wq!"退出vim:
+# 按下"esc"退出插入模式
+# 输入":wq!"退出vim:
 :wq!
-#(请记住这些操作方式)
+# (请记住这些操作方式)
 ```
 
 如果一定要开`reflector`的话，执行以下命令就可以了
@@ -56,7 +56,7 @@ mkfs.ext4 <你所分的系统根目录>(不一定是叫做/dev/sda2，类似于/
 
 ``` bash
 mount <你所分的系统根目录>(不一定叫做/dev/sda2，类似于/dev/sda2) /mnt
-mkdir /mnt/efi  #<-这行命令的意思是，在挂载到/mnt上的系统根目录上新建一个/efi的文件夹
+mkdir /mnt/efi  # <-这行命令的意思是，在挂载到/mnt上的系统根目录上新建一个/efi的文件夹
 mount <你所分的引导分区>(不一定叫做/efi，类似于/dev/sda1) /mnt/efi
 ```
 
@@ -96,7 +96,7 @@ pacman -S archlinux-keyring
 安装基本系统
 
 ``` bash
-pacstrap /mnt base base-devel linux linux-firmware nano
+pacstrap /mnt base base-devel linux linux-firmware vim
 ```
 
 
@@ -209,7 +209,7 @@ systemctl enable NetworkManager
 
 gnome:
 
-{% highlight bash%}
+``` bash
 pacman -S xorg gnome gnome-extra gnome-tweak-tool gdm pipewire-pulse pipewire-alsa pipewire-jack pavucontrol networkmanager
 systemctl enable gdm
 systemctl enable NetworkManager
@@ -228,8 +228,8 @@ systemctl enable NetworkManager
 pacman -S grub efibootmgr os-prober dosfstools intel-ucode
 grub-install --efi-directory=/efi
 
-#然后vim /etc/default/grub，找到#GRUB_DISABLE_OS_PROBER=true
-#取消注释并且把true改为false
+# 然后vim /etc/default/grub，找到#GRUB_DISABLE_OS_PROBER=true
+# 取消注释并且把true改为false
 
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
