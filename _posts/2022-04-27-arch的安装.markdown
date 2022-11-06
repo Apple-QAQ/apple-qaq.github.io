@@ -247,6 +247,7 @@ reboot
 
 **本猫猫在这里提一句，在装`arch`和用`arch`的时候要看`archwiki`的说~如果猫猫在这篇文章中有什么错误请各位大佬指出！**
 
-本文大量参考了`aya`大佬的文章，[点击此处可以看到原文章](https://note.aya1.top/#/Arch_For_Aya?id=%e5%88%86%e5%8c%ba%ef%bc%9acfdisk-devsda)
-
 最后祝愿大家使用`arch`愉快！
+
+> 本文大量参考了`aya`大佬的文章，[点击此处可以看到原文章](http://note.ay1.us/#/Arch_For_Aya?id=%e5%88%86%e5%8c%ba%ef%bc%9acfdisk-devsda)
+
