@@ -17,13 +17,21 @@ cover_color: blue
 
 # The blog button should not be removed.
 blog_button:
-    title: Blog
-    description: 参观我的博客
+  title: Blog
+  description: 哇啦哇啦哇啦哇啦哇啦……
 
 # Navigation buttons in the front page.
 nav:
-    - {title: Projects, description: 查看我的项目, url: 'https://github.com/Apple-QAQ?tab=repositories'}
-    - {title: Friend, description: 查看我的友链, url: 'https://apple-qaq.github.io/friendly'}
+  - {
+      title: Projects,
+      description: 呀！这是谁写的答辩呐！,
+      url: "https://github.com/Apple-QAQ?tab=repositories",
+    }
+  - {
+      title: Friends,
+      description: 看看猫猫的朋友都有谁呐ww,
+      url: "https://apple-qaq.github.io/friendly",
+    }
 
 # Pagination
 plugins: [jekyll-paginate]
@@ -32,17 +40,16 @@ paginate_path: "page/:num/"
 
 # Comment
 comment:
-    disqus: vno-jekyll
-    # duoshuo: 
-    
+  disqus: vno-jekyll
+  # duoshuo:
+
 # Social
 social:
-    github: Apple-QAQ
-    twitter: U_Apple_QAQ_U
-    mail: apple_qaq@outlook.com
-
+  github: Apple-QAQ
+  twitter: U_Apple_QAQ_U
+  mail: apple_qaq@outlook.com
 # Google Analytics
 # ga:
-    # id: your_ga_id
-    # host: your_host
+# id: your_ga_id
+# host: your_host
 
