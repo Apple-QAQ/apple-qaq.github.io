@@ -35,7 +35,7 @@ reflector --country China --age 24 --sort rate --protocol https --save /etc/pacm
 
 ## 2. 分区
 
-使用 `cfdisk` 分区，[点击这里查看cfdisk用法](https://www.runoob.com/linux/linux-comm-cfdisk.html)
+使用 `cfdisk` 分区，[点击这里查看 cfdisk 用法](https://www.runoob.com/linux/linux-comm-cfdisk.html)
 
 ``` bash
 cfdisk /dev/sda
@@ -85,9 +85,9 @@ mount <你所分的引导分区>(不一定叫做/efi，类似于/dev/sda1) /mnt/
 
 输入 `rfkill unblock all` 以解锁，然后就可以重复上面 `iwctl` 的方法的说~
 
-## 4. 安装arch
+## 4. 安装 ArchLinux
 
-安装 `archlinux-keyring` 来预防安装出现签名问题（其实没啥必要）
+安装 `archlinux-keyring` 来预防安装出现签名问题
 
 ``` bash
 pacman -S archlinux-keyring
@@ -100,15 +100,11 @@ pacstrap /mnt base base-devel linux linux-firmware vim
 ```
 
 
-
-
 生成 `fstab`
 
 ``` bash
 genfstab -U /mnt > /mnt/etc/fstab
 ```
-
-
 
 
 `arch-chroot` 进入安装到本地的系统
@@ -118,15 +114,11 @@ arch-chroot /mnt
 ```
 
 
-
-
 本地化
 
 ``` bash
 vim /etc/locale.gen
 ```
-
-
 
 取消这两个之前的注释
 ``` bash
@@ -134,14 +126,10 @@ en_US.UTF-8 UTF-8
 zh_CN.UTF-8 UTF-8
 ```
 
-
-
 重置语言
 ``` bash
 locale-gen
 ```
-
-
 
 设置时区与utc时间
 ``` bash
@@ -149,8 +137,6 @@ timedatectl set-timezone Asia/Shanghai
 timedatectl set-ntp true
 hwclock --systohc --utc
 ```
-
-
 
 新建用户并允许使用 `sudo`
 
@@ -161,23 +147,17 @@ vim /etc/sudoers
 %wheel ALL=(ALL) ALL
 ```
 
-
-
 设置这个用户的密码
 
 ``` bash
 passwd <你前面设置的用户名>
 ```
 
-
-
 设置 `root` 用户的密码
 
 ``` bash
 passwd root
 ```
-
-
 
 安装 kde 桌面环境以及其必要组件（建议装好桌面环境,配置好 `grub` 引导之后再看）
 
@@ -222,7 +202,7 @@ systemctl enable lightdm
 systemctl enable NetworkManager
 ```
 
-## 6. 配置 `grub`
+## 6. 配置 Grub
 
 ``` bash
 pacman -S grub efibootmgr os-prober dosfstools intel-ucode
